@@ -58,9 +58,8 @@ const ItemWrapper = styled.div`
   margin: 16px;
 `;
 
-export const Foods = ({
-  match
-}) => {
+export const Foods = ({match}) => {
+
   const initialState = {
     isOpenOrderDialog: false,
     selectedFood: null,
@@ -69,6 +68,7 @@ export const Foods = ({
     existingResutaurautName: '',
     newResutaurautName: '',
   };
+
   const [state, setState] = useState(initialState);
   const [foodsState, dispatch] = useReducer(foodsReducer, foodsInitialState);
   const history = useHistory();
@@ -77,6 +77,7 @@ export const Foods = ({
     dispatch({ type: foodsActionTyps.FETCHING });
     fetchFoods(match.params.restaurantsId)
       .then((data) => {
+        console.log(data)
         dispatch({
           type: foodsActionTyps.FETCH_SUCCESS,
           payload: {
